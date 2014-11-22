@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>cipherwallet testers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link href="css/cipherwallet.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="nb">
+      <div class="row">
+        <div class="col-md-1">
+          <img class="logo-pic" src="img/cipherwallet-logo.png" alt="logo">
+        </div>
+        <div class="col-md-2">
+          <span class="site-name">cipherwallet</span>
+        </div>
+        <div class="col-md-9">
+          <ul class="links">
+            <li><a href="#usage-top"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <section class="bg-top" style="margin-bottom: 40px;">
+      <div class="container">
+        <div class="bg-title">
+          <h2>Simple demo for cipherwallet usage.</h2>
+          <p>You may need one of these.</p>
+        </div>
+        <div class="mobileapps-box">
+          <span class="mobileapp"><a href="http://itunes.com/apps/cipherwallet">
+            <img src="img/appstore_apple.png" alt="iTunes App Store" />
+          </a></span>
+          <span class="mobileapp"><a href="">
+            <img src="img/appstore_google.png" alt="Google Play Store" />
+          </a></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="demos">
+      <div class="container forms">
+
+        <h2>Sign Up</h2>
+        <hr/>
+      	<div class="row signup-form">
+      		<div class="col-md-5 descriptive-text">
+      		  <ul class="relaxed">
+      		    <li>Display a cipherwallet QR code, obtained from our API, next to the signup form</li>
+      		    <li>Users can scan the code using the cipherwallet mobile app, instead of typing in the data</li>
+      		    <li>The cipherwallet mobile app selects the data you need and transfers it to your website</li>
+      		    <li>The signup form gets auto-filled with the data received</li>
+      		    <li>User finalizes the signup procedure by submitting the form data</li>
+      		    <li>Data needed for the QR code login is stored in your database, alongside the rest of the user's data</li>
+      		  </ul>
+      		</div>
+
+      		<div class="col-md-7">
+            <form id="signup_form" method="post" accept-charset="utf-8" class="form" role="form">
+              <div class="row">
+                <div class="col-xs-6 col-md-6">
+                  <input type="text" id="firstname" name="firstname" value="" class="form-control input-lg" placeholder="first name"/>
+                </div>
+                <div class="col-xs-6 col-md-6">
+                  <input type="text" id="lastname" name="lastname" value="" class="form-control input-lg" placeholder="last name"/>
+                </div>
+              </div>
+              <input type="text" id="company" name="company" value="" class="form-control input-lg" placeholder="company"/>
+              <input type="email" id="email" name="email" value="" class="form-control input-lg" placeholder="email"/>
+              <div class="row">
+                <div class="form-group col-xs-6 col-md-6">
+                  <input type="tel" id="phone" name="phone" value="" class="form-control input-lg" placeholder="phone"/>
+                </div>
+                <div class="form-group col-xs-6 col-md-6">
+                  <input type="text" id="zip" name="zip" value="" class="form-control input-lg" placeholder="zip code"/>
+                </div>
+              </div>
+              <hr/>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 passwords">
+                  <input type="text" name="password1" value="" class="form-control input-lg" placeholder="password"/>
+                  <input type="text" name="password2" value="" class="form-control input-lg" placeholder="password (again)"/>
+                </div>
+                <div id="pic" class="col-xs-6 col-md-6 text-center">
+                  <span class="use-cipherwallet orange">or scan this code with cipherwallet:</span>
+                  <div id="signup-form-qr"></div>
+                  <div id="signup_error" class="alert alert-danger"></div>
+                </div>
+              </div>
+              <div id="signup_success" class="alert alert-success">OK cool. You're signed up now.</div>
+
+              <hr />
+              <button class="btn btn-lg btn-warning" type="submit">> create account</button>
+            </form>          
+          </div>
+      		
+        </div>
+
+        <h2>Log in</h2>
+        <hr/>
+      	<div class="row login-form">
+      		<div class="col-md-7">
+            <form action="api/login" method="post" accept-charset="utf-8" class="form" role="form">
+              <div class="row">
+                <div class="col-xs-6 col-md-6 login-fields">
+                  <input type="email" name="email" value="" class="form-control input-lg" placeholder="email"/>
+                  <input type="text" name="password" value="" class="form-control input-lg" placeholder="password"/>
+                  <p style="margin-left: 15px;"><a href="forgot-password.html">Can't remember?</a></p>
+                </div>
+                <div class="col-xs-6 col-md-6 text-center">
+                  <span class="use-cipherwallet orange">or scan this code with cipherwallet:</span>
+                  <div id="login-form-qr"></div>
+                  <div id="login_error" class="alert alert-danger"></div>
+                  <div id="login_success" class="alert alert-success">OK cool. You're signed up now.</div>
+                </div>
+              </div>
+              <hr />
+              <button class="btn btn-lg btn-warning" type="submit">> log in</button>
+            </form>          
+          </div>
+      		<div class="col-md-5 descriptive-text">
+      		  <ul class="relaxed">
+      		    <li>Display a cipherwallet QR code, obtained from our API, next to the login fields</li>
+      		    <li>Users can scan the code using the cipherwallet mobile app, instead of typing username and password</li>
+      		    <li>The cipherwallet mobile app transfers user's credentials directly to your website</li>
+      		    <li>Your website authenticates the users and grants them access</li>
+      		    <li>At any time, you can remove user's credentials</li>
+      		  </ul>
+      		</div>
+        </div>
+
+        <h2>Checkout</h2>
+        <hr/>
+      	<div class="row checkout-form">
+      		<div class="col-md-4 descriptive-text">
+      		  <ul class="relaxed">
+      		    <li>Display a cipherwallet QR code, obtained from our API, on the page with the checkout form</li>
+      		    <li>Users can scan the code using the cipherwallet mobile app, instead of typing credit card data</li>
+      		    <li>The cipherwallet mobile app selects the data you need and transfers it to your website</li>
+      		    <li>The payment form gets auto-filled with the data received</li>
+      		    <li>User finalizes the checkout procedure by submitting the form data</li>
+      		    <li>Does not affect the current integration with your payment processor</li>
+      		  </ul>
+      		</div>
+
+      		<div class="col-md-8">
+            <form action="api/checkout" method="post" accept-charset="utf-8" class="form" role="form">
+
+              <div class="row">
+                <div class="col-xs-6 col-md-6">
+                  <input type="text" id="order_firstname" name="firstname" value="" class="form-control input-lg" placeholder="first name"/>
+                  <input type="text" id="order_lastname" name="lastname" value="" class="form-control input-lg" placeholder="last name"/>
+                  <input type="email" id="order_email" name="email" value="" class="form-control input-lg" placeholder="email"/>
+                  <input type="tel" id="order_phone" name="phone" value="" class="form-control input-lg" placeholder="phone"/>
+                </div>
+                <div class="col-xs-6 col-md-6 text-center">
+                  <span class="use-cipherwallet orange">or scan this code with cipherwallet:</span>
+                  <div id="checkout-form-qr"></div>
+                  <div id="checkout_error" class="alert alert-danger"></div>
+                  <div id="checkout_success" class="alert alert-success">OK cool. You're signed up now.</div>
+                </div>
+              </div>
+
+              <hr/>
+              <h4>credit card</h4>
+              <input type="text" id="cardholder" name="cardholder" value="" class="form-control input-lg" placeholder="cardholder name"/>
+              <div class="row">
+                <div class="col-xs-7 col-md-7">
+                  <input type="text" id="card_num" name="card" value="" class="form-control input-lg" placeholder="card number"/>
+                </div>
+                <div class="col-xs-3 col-md-3">
+                  <input type="text" id="card_exp" name="exp" value="" class="form-control input-lg" placeholder="exp MM/YY"/>
+                </div>
+                <div class="col-xs-2 col-md-2">
+                  <input type="text" id="card_cvv" name="cvv" value="" class="form-control input-lg" placeholder="cvv"/>
+                </div>
+              </div>
+
+              <hr/>
+              <h4>billing address</h4>
+              <div class="row">
+                <div class="col-xs-6 col-md-6">
+                  <input type="text" id="billto_first" name="billing-first" value="" class="form-control input-lg" placeholder="first name"/>
+                </div>
+                <div class="col-xs-6 col-md-6">
+                  <input type="text" id="billto_last" name="billing-last" value="" class="form-control input-lg" placeholder="last name"/>
+                </div>
+              </div>
+              <input type="text" id="billto_address1" name="billing-address1" value="" class="form-control input-lg" placeholder="street address"/>
+              <input type="text" id="billto_address2" name="billing-address1" value="" class="form-control input-lg" placeholder="unit or apt"/>
+              <div class="row">
+                <div class="col-xs-7 col-md-7">
+                  <input type="text" id="billto_city" name="billing-city" value="" class="form-control input-lg" placeholder="city"/>
+                </div>
+                <div class="col-xs-2 col-md-2">
+                  <input type="text" id="billto_state" name="billing-state" value="" class="form-control input-lg" placeholder="state"/>
+                </div>
+                <div class="col-xs-3 col-md-3">
+                  <input type="text" id="billto_zip" name="billing-zip" value="" class="form-control input-lg" placeholder="zip"/>
+                </div>
+              </div>
+
+              <hr/>
+              <h4>shipping address</h4>
+              <div class="row">
+                <div class="col-xs-6 col-md-6">
+                  <input type="text" id="shipto_first" name="shipping-first" value="" class="form-control input-lg" placeholder="first name"/>
+                </div>
+                <div class="col-xs-6 col-md-6">
+                  <input type="text" id="shipto_last" name="shipping-last" value="" class="form-control input-lg" placeholder="last name"/>
+                </div>
+              </div>
+              <input type="text" id="shipto_address1" name="shipping-address1" value="" class="form-control input-lg" placeholder="street address"/>
+              <input type="text" id="shipto_address2" name="shipping-address2" value="" class="form-control input-lg" placeholder="unit or apt"/>
+              <div class="row">
+                <div class="col-xs-7 col-md-7">
+                  <input type="text" id="shipto_city" name="shipping-city" value="" class="form-control input-lg" placeholder="city"/>
+                </div>
+                <div class="col-xs-2 col-md-2">
+                  <input type="text" id="shipto_state" name="shipping-state" value="" class="form-control input-lg" placeholder="state"/>
+                </div>
+                <div class="col-xs-3 col-md-3">
+                  <input type="text" id="shipto_zip" name="shipping-zip" value="" class="form-control input-lg" placeholder="zip"/>
+                </div>
+              </div>
+
+              <hr />
+              <p><muted>this is just a demo, the button below is inactive.<br/>your card will not be charged, and details will not be saved.</muted></p>
+              <button class="btn btn-lg btn-warning" type="submit">> submit payment</button>
+            </form>          
+          </div>
+      		
+        </div>
+
+        <h2>Register</h2>
+        <hr/>
+      	<div class="row register-form">
+          <div class="col-md-4">
+            <button id="register" class="btn btn-lg btn-warning" type="submit" onclick="showRegistrationCode()">> show code</button>
+            <div id="reg-qr"></div>
+            <div id="reg_error" class="alert alert-danger"></div>
+            <div id="reg_success" class="alert alert-success">OK cool. You're signed up now.</div>
+          </div>
+          <div class="col-md-8 descriptive-text">
+            <ul class="relaxed">
+              <li>If they missed the chance when they signed up, your users can still opt to use QR-based logins</li>
+              <li>You should use this facility on the user settings page, close to where they can change their password</li>
+              <li>The user scans the QR code with their cipherwallet app, and credentials are created and transferred to them directly</li>
+              <li>You should keep the duration of displaying this QR code to a minimum - someone else may scan the code over user's shoulder </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="js/cufon-yui.js" type="text/javascript"></script> 
+    <script src="js/Maven_Pro_500.font.js" type="text/javascript"></script> 
+    <script src="cipherwallet/cipherwallet.js" type="text/javascript"></script> 
+    <script type="text/javascript">
+Cufon.now(); Cufon.replace('.nb .site-name,.nb .links li,.forms h2');
+
+var signup_qr;
+signup_qr = new Cipherwallet({
+    qrContainerID: "signup-form-qr",
+    detailsURL: "http://www.cipherwallet.com/wtfcipherwallet.html",
+    onSuccess: function(user_data) {
+        $('#firstname').val(user_data.user.first);
+        $('#lastname').val(user_data.user.last);
+        if (user_data.job)
+            $('#company').val(user_data.job.company);
+        $('#email').val(user_data.email.email);
+        if (user_data.phone)
+            $('#phone').val(user_data.phone.num);
+        if (user_data.address)
+            $('#zip').val(user_data.address.zip);
+        if (user_data.pic)
+            $('#pic').html('<img alt="Embedded Image" src="data:image/jpeg;base64,' + user_data.pic + '" width="100px" height="100px" />');
+        $("#signup_success").html("Cool. Now make sure all the data is OK and then press the <em>create account</em> button.");
+        $("#signup_success").show();
+        $('#signup_qr').hide();
+    },
+    onFailure: function(err) {
+        $('#pass1').val("");
+        $('#pass2').val("");
+        var msg = "Oops. Something went wrong with the cipherwallet signup process. Sorry."
+        switch(err) {
+            case 400: msg = "Something's wrong in the cipherwallet SDK, the parameters dont seem to have been transmitted correctly.";
+            case 401: msg = "The data transmitted by the mobile application was invalid. Please try again, or type in the data in the fields manually.";
+            case 410: msg = "The signup QR code is only valid for a limited period of time. That's why it's gone - it was expired. Refresh the page to obtain a new one.";
+        }
+        $("#signup_error").html(msg);
+        $("#signup_error").show();
+        signup_qr.stop();
+    }
+});
+
+$("#signup_form").on("submit", function (ev) {
+// this function executes on the signup form submit calls the submit procedure with the data collected on the submit form
+    //! validate data you submit to the signup API
+    ev.preventDefault();
+    $.ajax({ 
+        type: "POST",
+        url: "/user/" + $("#email").val(),
+        data: $("#signup_form").serialize(), 
+        success: function(user_data, status) {
+            // we created the user successfully, we need to complete the operation with the 
+            //     cipherwallet API so they register the user as one of our users
+            $("#signup-form-qr").hide();
+            signup_qr.registerForQRLogin(user_data.email, function(success) {
+                if (success) {
+                    console.log("cipherwallet registration succeeded");
+                    $("#signup_success").html("The signup process is complete. You may now also use cipherwallet QR login.");
+                    $("#signup_success").show();
+                } else {
+                    console.log("cipherwallet registration sucked");
+                    $("#signup_error").html("Oops! The signup process failed.");
+                    $("#signup_error").show();
+                }
+            });
+        },
+        error: function(xhr) { 
+            $("#signup-form-qr").hide();
+            $("#signup_error").html("There was an error saving the data you entered. Account was not created.");
+            $("#signup_error").show();
+        },
+        complete: function() { 
+            $('#pass1').val("");
+            $('#pass2').val("");
+        }, 
+        timeout: 10000 
+    });
+});
+
+var login_qr;
+login_qr = new Cipherwallet({
+    qrContainerID: "login-form-qr",
+    detailsURL: "http://www.cipherwallet.com/wtfcipherwallet.html",
+    onSuccess: function(user_data) {
+        console.log(user_data);
+        $("#login_success").html("Hello, " + user_data.firstname + ". You are now logged in.");
+        $("#login_success").show();
+        login_qr.stop();
+    },
+    onFailure: function(err) {
+        $('#password').val("");
+        var msg = "Oops. Something went wrong with the cipherwallet login process. Sorry."
+        switch(err) {
+            case 400: msg = "Something's wrong in the cipherwallet SDK, the parameters dont seem to have been transmitted correctly.";
+            case 401: msg = "The data transmitted by the mobile application was invalid. Please try again, or log in manually.";
+            case 410: msg = "The login QR code is only valid for a limited period of time. That's why it's gone - it was expired. Refresh the page to obtain a new one.";
+        }
+        $("#login_error").html(msg);
+        $("#login_error").show();
+        login_qr.stop();
+    }
+});
+
+var checkout_qr;
+checkout_qr = new Cipherwallet({
+    qrContainerID: "checkout-form-qr",
+    detailsURL: "http://www.cipherwallet.com/wtfcipherwallet.html",
+    onSuccess: function(user_data) {
+        $('#order_firstname').val(user_data.name.first);
+        $('#order_lastname').val(user_data.name.last);
+        $('#order_email').val(user_data.email.email);
+        if (user_data.phone)
+            $('#order_phone').val(user_data.phone.num);
+
+        if (user_data.creditcard) {
+            $('#cardholder').val(user_data.creditcard.name);
+            $('#card_num').val(user_data.creditcard.num);
+            $('#card_exp').val(user_data.creditcard.exp.substr(0, 2) + "/" + user_data.creditcard.exp.substr(2, 2));
+            $('#card_cvv').val(user_data.creditcard.cvv);
+        }
+
+        if (user_data.billto) {
+            $('#billto_first').val(user_data.name.first);
+            $('#billto_last').val(user_data.name.last);
+            $('#billto_address1').val(user_data.billto.street);
+            $('#billto_address2').val(user_data.billto.street2);
+            $('#billto_city').val(user_data.billto.city);
+            $('#billto_state').val(user_data.billto.state);
+            $('#billto_zip').val(user_data.billto.zip);
+        }
+
+        if (user_data.shipto) {
+            $('#shipto_first').val(user_data.name.first);
+            $('#shipto_last').val(user_data.name.last);
+            $('#shipto_address1').val(user_data.shipto.street);
+            $('#shipto_address2').val(user_data.shipto.street2);
+            $('#shipto_city').val(user_data.shipto.city);
+            $('#shipto_state').val(user_data.shipto.state);
+            $('#shipto_zip').val(user_data.shipto.zip);
+        }
+
+        $("#checkout_success").html("Cool. Now make sure all the data is OK and then press the <em>submit payment</em> button.");
+        $("#checkout_success").show();
+        
+        checkout_qr.stop();
+    },
+    onFailure: function(err) {
+        $('#password').val("");
+        var msg = "Oops. Something went wrong with the cipherwallet login process. Sorry."
+        switch(err) {
+            case 400: msg = "Something's wrong in the cipherwallet SDK, the parameters dont seem to have been transmitted correctly.";
+            case 401: msg = "The data transmitted by the mobile application was invalid. Please try again, or fill in the payment form manually.";
+            case 410: msg = "The checkout QR code is only valid for a limited period of time. That's why it's gone - it was expired. Refresh the page to obtain a new one.";
+        }
+        $("#checkout_error").html(msg);
+        $("#checkout_error").show();
+        checkout_qr.stop();
+    }
+});
+
+var reg_qr;
+function showRegistrationCode() {
+    $('#register').hide();
+    reg_qr = new Cipherwallet({
+        qrContainerID: "reg-qr",
+        detailsURL: "http://www.cipherwallet.com/wtfcipherwallet.html",
+        onSuccess: function(user_data) {
+            console.log(user_data);
+            $("#reg_success").html("Cool. You can now use your mobile cipherwallet app to log in.");
+            $("#reg_success").show();
+            reg_qr.stop();
+        },
+        onFailure: function(err) {
+            var msg = "Oops. Something went wrong with the cipherwallet registration process. Sorry."
+            switch(err) {
+                case 400: msg = "Something's wrong in the cipherwallet SDK, the parameters dont seem to have been transmitted correctly.";
+                case 401: msg = "The data transmitted by the mobile application was invalid. Please try again, or log in manually.";
+                case 410: msg = "The registration QR code is only valid for a limited period of time. That's why it's gone - it was expired. Refresh the page to obtain a new one.";
+            }
+            $("#reg_error").html(msg);
+            $("#reg_error").show();
+            reg_qr.stop();
+        }
+    });
+}
+
+
+    </script>
+
+  </body>
+
+</html>
