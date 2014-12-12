@@ -193,7 +193,6 @@ def callback_with_data(operation, rq):
 
     reg_meta = rq.get('reg_meta')
     if reg_meta:
-        del rq['reg_meta']
         reg_tag = reg_meta['tag']
 
     rp = {}
@@ -233,7 +232,7 @@ def callback_with_data(operation, rq):
     if operation != OP_REGISTRATION:
         # store the request payload (i.e. data from the mobile app) in the temporary storage, 
         #    so that the next poll will find it
-        if tmp_datastore.set_user_data(session, rq) is None:
+        if tmp_datastore.set_user_data(session, rq['user_data']) is None:
             raise CipherwalletError(500, "Server Error")
 
     # we're in the 200 OK territory already, but if possible, build a decent response for 
