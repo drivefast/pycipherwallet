@@ -14,9 +14,9 @@ Obviously, this is NOT the ideal alternative of implementing a temporary storage
 Some files become obsolete after a few seconds or minutes. To indicate the validity  
 of the files, as soon as we create them, we change the last-modified date to a 
 future date when the data is considered stale or invalid. You HAVE TO run a cron job 
-that deletes the obsoleted files, otherwise your directory will keep filling up
-
-find . -type f -mmin -$((60*24)) -exec rm '{}' \;
+that deletes the obsoleted files, otherwise your directory will keep filling up.
+use the following command in a crontab that executes every hour:
+    find /path/to/sessions/directory -type f -mmin +60 -delete
 """
 
 K_NONCE = "CQR_NONCE_{0}_{1}"       # + user, nonce

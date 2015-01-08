@@ -6,7 +6,7 @@ from sqlalchemy.sql import text as sql_statement
 
 import cipherwallet.api_router
 
-ROOT = '/path/to/pycipherwallet'
+ROOT = '/path/to/pycipherwallet/example'
 
 @bottle.route('/<folder:re:css>/<filename:re:.*\.css>')
 @bottle.route('/<folder:re:js>/<filename:re:.*\.js>')
@@ -18,9 +18,9 @@ def static_css(folder, filename):
 def static(filename):
     return bottle.static_file(filename, root=ROOT)
 
-@bottle.route('/cipherwallet/cipherwallet.js')
+@bottle.route('/js/cipherwallet.js')
 def cipherwalletjs():
-    return bottle.static_file("cipherwallet/cipherwallet.js", root=ROOT)
+    return bottle.static_file("js/cipherwallet.js", root=ROOT)
 
 @bottle.post('/user/<user_id>')
 def create_user(user_id):
@@ -82,4 +82,4 @@ def create_user(user_id):
 
 if __name__ == "__main__":
     bottle.debug(True)
-    bottle.run(host="0.0.0.0", port=8080, reloader=True)
+    bottle.run(host="127.0.0.1", port=8070, reloader=True)
