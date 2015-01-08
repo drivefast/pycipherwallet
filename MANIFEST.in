@@ -1,0 +1,13 @@
+# include the example site
+recursive-include example/*
+
+# make sure you carry the .js file in the package
+include cipherwallet/cipherwallet.js
+include cipherwallet/1x1.png
+
+# stuff in the root directory
+include CHANGELOG
+include LICENSE
+include README.md
+include BASICS.md
+include VERSION

@@ -1,5 +1,6 @@
 .pypirc
 *.pyc
 *.egg-info
+dist
 cipherwallet/constants.py
 cipherwallet/hooks.py
