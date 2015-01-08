@@ -143,10 +143,10 @@ This is it!
   [account management page]: http://www.cipherwallet.com/home.html
   [landing page]: http://www.cipherwallet.com/user.html
   [API documentation]: http://www.cipherwallet.com/cust_doc.html
-  [checkout service documentation]: http://www.cipherwallet.com/cust_doc.html#checkout_service
-  [signup service documentation]: http://www.cipherwallet.com/cust_doc.html#signup_service
-  [login service documentation]: http://www.cipherwallet.com/cust_doc.html#login_service
-  [registration service documentation]: http://www.cipherwallet.com/cust_doc.html#registration_service
+  [checkout service documentation]: http://www.cipherwallet.com/cust_doc.html#checkout
+  [signup service documentation]: http://www.cipherwallet.com/cust_doc.html#signup
+  [login service documentation]: http://www.cipherwallet.com/cust_doc.html#login
+  [registration service documentation]: http://www.cipherwallet.com/cust_doc.html#registration
   [bottle]: http://bottlepy.org/docs/dev/index.html
   [sqlalchemy]: http://www.sqlalchemy.org/
   [1-click]: http://www.amazon.com/gp/help/customer/display.html?nodeId=468482
